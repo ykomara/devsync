@@ -1,14 +1,14 @@
 from django.urls import path, include
-from rest_framework import routers
-
 from . import views
-from .views import UserViewSet, ProjectViewSet, TaskViewSet
 
-router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
-router.register(r'projects', ProjectViewSet)
-router.register(r'tasks', TaskViewSet)
+from .views import UserAPIView
+from .views import ProjectAPIView
+from .views import  TaskAPIView
+from .views import UserAPIView
+
 urlpatterns = [
-    path('api/', include(router.urls)),
-    path('', views.index, name="index")
+    path('', views.index, name="index"),
+    path('api/users/', UserAPIView.as_view()),
+   path('api/projects/', ProjectAPIView.as_view()),
+   path('api/tasks/', TaskAPIView.as_view())
 ]

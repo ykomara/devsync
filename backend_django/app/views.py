@@ -1,27 +1,38 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-from rest_framework import viewsets, permissions
-
+from rest_framework.permissions import AllowAny
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from .models import User, Project, Task
 from .serializers import UserSerializer, ProjectSerializer, TaskSerializer
 
 
-# Create your views here.
 def index(request):
     return HttpResponse("Bonjour")
 
-# ViewSets define the view behavior.
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
-class ProjectViewSet(viewsets.ModelViewSet):
-    queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
-    permission_classes = [permissions.IsAuthenticated]
+# Create your views here.
 
-class TaskViewSet(viewsets.ModelViewSet):
-    queryset = Task.objects.all()
-    serializer_class = TaskSerializer
-    permission_classes = [permissions.IsAuthenticated]
+class UserAPIView(APIView):
+    permission_classes = [AllowAny]
+    def get(self, *args, **kwargs):
+       users=User.objects.all()
+       serializer=UserSerializer(users, many=True)
+       return Response(serializer.data)
+
+class ProjectAPIView(APIView):
+    permission_classes = [AllowAny]
+    def get(self, *args, **kwargs):
+        projects=Project.objects.all()
+        serializer=ProjectSerializer(projects, many=True)
+        return Response(serializer.data)
+
+class TaskAPIView(APIView):
+    def get(self, *args, **kwargs):
+        tasks=Task.objects.all()
+        serializer=TaskSerializer(tasks, many=True)
+        return Response(serializer.data)
+
+
+
+
+
