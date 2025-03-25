@@ -4,14 +4,30 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import User, Project, Task
 from .serializers import UserSerializer, ProjectSerializer, TaskSerializer
-
+from rest_framework.viewsets import ModelViewSet
 
 def index(request):
     return HttpResponse("Bonjour")
 
+class UserViewset(ModelViewSet):
+    permission_classes = [AllowAny]
+    serializer_class = UserSerializer
+    def get_queryset(self):
+        return User.objects.all()
 
-# Create your views here.
+class ProjectViewset(ModelViewSet):
+    permission_classes = [AllowAny]
+    serializer_class = ProjectSerializer
+    def get_queryset(self):
+        return Project.objects.all()
 
+class TaskViewset(ModelViewSet):
+    permission_classes = [AllowAny]
+    serializer_class = TaskSerializer
+    def get_queryset(self):
+        return Task.objects.all()
+
+"""
 class UserAPIView(APIView):
     permission_classes = [AllowAny]
     def get(self, *args, **kwargs):
@@ -31,6 +47,11 @@ class TaskAPIView(APIView):
         tasks=Task.objects.all()
         serializer=TaskSerializer(tasks, many=True)
         return Response(serializer.data)
+
+"""
+# Create your views here.
+
+
 
 
 
