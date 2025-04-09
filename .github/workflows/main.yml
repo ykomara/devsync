@@ -66,6 +66,6 @@ jobs:
       - name: Run tests with coverage
         run: |
           cd backend_django
-          python manage.py test
+          coverage run manage.py test app
           coverage report
           coverage html
