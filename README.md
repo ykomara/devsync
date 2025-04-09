@@ -1,3 +1,3 @@
-Ajout lignes vides pour GitHub Actions.
-ligne suivante
+![Django CI](https://github.com/ykomara/devsync/actions/workflows/main.yml/badge.svg)
+
 
