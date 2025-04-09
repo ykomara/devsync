@@ -1,1 +1,1 @@
-Ajout ligne vide pour GitHub Actions
+Ajout ligne vide pour GitHub Actions.
