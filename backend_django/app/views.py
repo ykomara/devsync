@@ -7,7 +7,7 @@ from .serializers import UserSerializer, ProjectSerializer, TaskSerializer
 from rest_framework.viewsets import ModelViewSet
 
 def index(request):
-    return HttpResponse("Bonjour")
+    return HttpResponse("Bonjour je suis Yaya KOMARA ingénieur logiciel")
 
 class UserViewset(ModelViewSet):
     permission_classes = [AllowAny]
