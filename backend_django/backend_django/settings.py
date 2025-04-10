@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+from dotenv import load_dotenv
+load_dotenv()
 import os
 from pathlib import Path
 
@@ -25,7 +27,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-a5ibc89-s+uiu&o20-uq(ukgff
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['devsync-egcx.onrender.com']
+ALLOWED_HOSTS = ['devsync-egcx.onrender.com', '127.0.0.1']
 
 
 # Application definition
