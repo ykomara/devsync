@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-a5ibc89-s+uiu&o20-uq(ukgff
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['devsync-egcx.onrender.com', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', 'devsync-egcx.onrender.com', '127.0.0.1']
 
 
 # Application definition
