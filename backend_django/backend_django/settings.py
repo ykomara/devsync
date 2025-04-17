@@ -155,3 +155,5 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_CREDENTIALS: True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+AUTH_USER_MODEL = 'app.User'

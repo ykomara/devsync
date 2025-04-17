@@ -1,9 +1,10 @@
 from django.http import HttpResponse
+from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import User, Project, Task
-from .serializers import UserSerializer, ProjectSerializer, TaskSerializer
+from .serializers import UserSerializer, ProjectSerializer, TaskSerializer, RegisterSerializer
 from rest_framework.viewsets import ModelViewSet
 
 def index(request):
@@ -14,6 +15,12 @@ class UserViewset(ModelViewSet):
     serializer_class = UserSerializer
     def get_queryset(self):
         return User.objects.all()
+
+class RegisterView(CreateAPIView):
+    permission_classes = [AllowAny]
+    serializer_class = RegisterSerializer
+    queryset = User.objects.all()
+
 
 class ProjectViewset(ModelViewSet):
     permission_classes = [AllowAny]

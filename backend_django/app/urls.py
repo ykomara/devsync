@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework import routers
 from. import views
-from .views import UserViewset
+from .views import RegisterView
 
 """
 from .views import UserAPIView, ProjectAPIView, TaskAPIView
@@ -21,6 +21,7 @@ router.register('tasks', views.TaskViewset, basename='tasks')
 urlpatterns = [
     path('', views.index, name="index"),
     path('api/', include(router.urls)),
+    path('api/register/', RegisterView.as_view(), name='register'),
 ]
 
 
